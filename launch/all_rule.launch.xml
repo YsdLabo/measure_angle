@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+  <node pkg="bno055_usb_stick_ros2" exec="bno055_usb_stick_node">
+    <param name="port" value="/dev/ttyBNO055"/>
+    <param name="pose_frame_id" value="imu_link"/>
+  </node>
+  <node pkg="measure_angle" exec="euler_rule_node"/>
+  <node pkg="measure_angle" exec="trapezoidal_rule_node"/>
+  <node pkg="rviz2" exec="rviz2" args="-f imu_link"/>
+</launch>
