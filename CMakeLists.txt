@@ -19,11 +19,9 @@ find_package ( tf2_geometry_msgs  REQUIRED )
 # Set target
 add_executable ( euler_rule_node  src/euler_rule.cpp )
 ament_target_dependencies ( euler_rule_node  rclcpp  sensor_msgs geometry_msgs tf2 tf2_geometry_msgs )
-add_executable ( trapezoidal_rule_node  src/trapezoidal_rule.cpp )
-ament_target_dependencies ( trapezoidal_rule_node  rclcpp  sensor_msgs geometry_msgs tf2 tf2_geometry_msgs )
 
 install ( 
-  TARGETS  euler_rule_node trapezoidal_rule_node
+  TARGETS  euler_rule_node
   DESTINATION  lib/${PROJECT_NAME} 
 )
 

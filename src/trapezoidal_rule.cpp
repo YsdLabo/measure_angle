@@ -33,13 +33,13 @@ private:
 		// 区分求積法
 		if(!first_time_) {
 			double  h = (current_stamp - last_stamp_).seconds();
-			angle_z_ += h * (imu_raw.angular_velocity.z+last_raw_z_) * 0.5;
+			angle_z_ += // ここに台形近似の式を入力。last_raw_z_を使用すること
 		}
 		else {
 			angle_z_ = 0.0;
 			first_time_ = false;
 		}
-		last_raw_z_ = imu_raw.angular_velocity.z;
+		last_raw_z_ = imu_raw.angular_velocity.z;    // 現在の計測値を記憶
 		RCLCPP_INFO(this->get_logger(), "angle_z : %f", angle_z_);
 
 		// Yaw角の配信
